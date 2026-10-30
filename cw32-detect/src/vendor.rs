@@ -62,8 +62,17 @@ impl Vendor for Whxy {
 fn candidate_names(t: &str, flash: Option<u32>) -> Vec<String> {
     let mut out = vec![t.to_string()];
     if let Some(entry) = SERIES.iter().find(|e| t.starts_with(e.prefix)) {
-        if t.len() >= 2 && t.is_char_boundary(t.len() - 2) {
-            out.push(format!("{}x{}", &t[..t.len() - 2], &t[t.len() - 1..]));
+        // 封装后缀剥离: 逐前缀回退(与 detect::resolve 同口径), 每个前缀同时给出
+        // 精确名与 x 归一化名。Registry 的名称匹配本身把 x 当通配符, 两种都能命中。
+        for cut in (6..t.len()).rev() {
+            if !t.is_char_boundary(cut) {
+                continue;
+            }
+            let p = &t[..cut];
+            out.push(p.to_string());
+            if p.len() >= 2 && p.is_char_boundary(p.len() - 2) {
+                out.push(format!("{}x{}", &p[..p.len() - 2], &p[p.len() - 1..]));
+            }
         }
         for v in entry.variants {
             if Some(v.rom) == flash {
@@ -126,6 +135,17 @@ pub fn register_vendor() {
     });
 }
 
+/// 解析单个 CW32 target YAML。
+///
+/// probe-rs-target 0.32 没有 `ChipFamily::from_yaml_file`; 上游 Registry 的
+/// 加载方式就是 `yaml_serde::from_str`(见 registry.rs `add_target_family_from_yaml`),
+/// 这里保持同一反序列化路径, 因此同样受 `deny_unknown_fields` schema 校验约束。
+pub fn parse_family_file(p: &std::path::Path) -> Result<ChipFamily, String> {
+    let text =
+        std::fs::read_to_string(p).map_err(|e| format!("读取 {} 失败: {e}", p.display()))?;
+    yaml_serde::from_str::<ChipFamily>(&text).map_err(|e| format!("解析 {} 失败: {e}", p.display()))
+}
+
 /// 从目录加载 CW32 target 定义(`CW32*_Series.yaml`)并注册。
 /// 注册后本进程内使用这些芯片无需再传 `--chip-description-path`。
 ///
@@ -145,14 +165,7 @@ pub fn register_targets_from_dir(dir: &std::path::Path) -> Result<usize, String>
         if !name_ok {
             continue;
         }
-        // probe-rs-target 0.32 没有 ChipFamily::from_yaml_file; 上游 Registry 的
-        // 加载方式就是 yaml_serde::from_str(见 registry.rs add_target_family_from_yaml)。
-        let text = std::fs::read_to_string(&p)
-            .map_err(|e| format!("读取 {} 失败: {e}", p.display()))?;
-        match yaml_serde::from_str::<ChipFamily>(&text) {
-            Ok(f) => families.push(f),
-            Err(e) => return Err(format!("解析 {} 失败: {e}", p.display())),
-        }
+        families.push(parse_family_file(&p)?);
     }
     let n = families.len();
     register_plugin(Plugin {

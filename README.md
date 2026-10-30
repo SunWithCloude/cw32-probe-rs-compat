@@ -189,7 +189,24 @@ target 层转换规则（与 probe-rs 官方 `target-gen` 一致，以两份硬�
 | `targets/CW32F030_Series.yaml` | PR #4549（SunWithCloude，CW32F030C8T7 + ST-Link V2 硬件验证） | 算法 blob **逐字节一致**（632 B）；pc 入口、data_section_offset(0x254)、flash_properties 全同 |
 | `targets/CW32L031…` 同源流程产物 `flashcw32l012` | 上游已合并的 `CW32L0_Series.yaml`（#3682） | 算法 blob **逐字节一致**（412 B）；全字段同 |
 
-**未在真实硬件上测试的部分**：`cw32-detect` 的数字签名板上识别。识别所用的地址与字段宽度均逐系列核对过官方 `cw32xx_digitalsign.h/.c`，且读取走 probe-rs 公开 API；如首个版本有出入，请反馈实际读数，`detection_table.json` + `scripts/emit_rust_table.py` 可即时重生成。
+**板上验证（2026-10-31，CW32L012C8T6 StartKit + ST-Link V2，probe-rs 0.32.0）**：
+
+```
+$ cw32-detect
+CW32 芯片识别成功
+  型号串:       CW32L012C8T6  (数字签名 @ 0x1007e0)
+  Flash:        65536 字节 (64 KB)
+  RAM:          8192 字节 (8 KB)
+  封装管脚:     48
+  UID:          73:00:AF:00:08:72:56:11:0C:87
+  probe-rs 目标: CW32L012x8  (匹配方式: NormalizedX)
+  来源:         probe-rs 内置 (v0.31.0+, 无需额外 target 文件)
+  用法:         probe-rs <命令> --chip CW32L012x8 ...
+```
+
+实测发现厂商型号串带封装后缀（`…C8T6`），因此变体解析会逐前缀剥离封装码后再做精确 / x 归一化匹配（其它封装如 `CW32F030C8T7` 同样受益）。`cargo test` 含 9 家族 YAML 全量解析测试（走上游同款 `deny_unknown_fields` schema）。
+
+识别所用的地址与字段宽度均逐系列核对过官方 `cw32xx_digitalsign.h/.c`；如某系列实测读数与本表有出入，请反馈实际读数，`detection_table.json` + `scripts/emit_rust_table.py` 可即时重生成。
 
 **构建验证（2026-10-31）**：`cw32-detect` 对 crates.io `probe-rs = 0.32.0`（非 git 版）release 构建零错误零警告。为适配 0.32 公开 API 做了如下修正：
 

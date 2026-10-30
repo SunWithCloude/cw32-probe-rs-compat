@@ -273,11 +273,21 @@ fn resolve(
     if let Some(v) = entry.variants.iter().find(|v| v.name == t) {
         return (v.name.to_string(), MatchMode::Exact);
     }
-    // 2. x 归一化 (上游 L0 系列 "x8" 命名)
-    if t.len() >= 2 && t.is_char_boundary(t.len() - 2) {
-        let norm = format!("{}x{}", &t[..t.len() - 2], &t[t.len() - 1..]);
-        if let Some(v) = entry.variants.iter().find(|v| v.name == norm) {
-            return (v.name.to_string(), MatchMode::NormalizedX);
+    // 2. 封装后缀剥离: 厂商型号串常带封装码(如 CW32L012C8T6 / CW32F030C8T7),
+    //    逐前缀回退, 每个前缀先做精确匹配再做 x 归一化(上游 L0 系列 "x8" 命名)。
+    for cut in (6..t.len()).rev() {
+        if !t.is_char_boundary(cut) {
+            continue;
+        }
+        let p = &t[..cut];
+        if let Some(v) = entry.variants.iter().find(|v| v.name == p) {
+            return (v.name.to_string(), MatchMode::Exact);
+        }
+        if p.len() >= 2 && p.is_char_boundary(p.len() - 2) {
+            let norm = format!("{}x{}", &p[..p.len() - 2], &p[p.len() - 1..]);
+            if let Some(v) = entry.variants.iter().find(|v| v.name == norm) {
+                return (v.name.to_string(), MatchMode::NormalizedX);
+            }
         }
     }
     // 3. 出厂区 Flash 容量匹配
