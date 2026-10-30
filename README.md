@@ -206,6 +206,15 @@ CW32 芯片识别成功
 
 实测发现厂商型号串带封装后缀（`…C8T6`），因此变体解析会逐前缀剥离封装码后再做精确 / x 归一化匹配（其它封装如 `CW32F030C8T7` 同样受益）。`cargo test` 含 9 家族 YAML 全量解析测试（走上游同款 `deny_unknown_fields` schema）。
 
+**自动识别链验证（同日）**：`src/bin/auto_attach.rs` 通过 probe-rs 0.32 plugin API 注册 WHXY vendor（`register_plugin` 前置插入与内置识别同一条 `VENDORS` 链），以 `TargetSelector::Auto` attach——即 `probe-rs info` 背后的 `auto_determine_target` 路径——**不指定芯片名**，同一块此前报 `could not automatically be determined` 的板输出：
+
+```
+$ auto_attach   # register_vendor(); Probe::attach(TargetSelector::Auto, ..)
+auto-detected: CW32L012x8
+```
+
+hook 内部实测：候选基址读取失败后 `reinitialize()` 即可清 MINDP sticky error，扫描得以继续。
+
 识别所用的地址与字段宽度均逐系列核对过官方 `cw32xx_digitalsign.h/.c`；如某系列实测读数与本表有出入，请反馈实际读数，`detection_table.json` + `scripts/emit_rust_table.py` 可即时重生成。
 
 **构建验证（2026-10-31）**：`cw32-detect` 对 crates.io `probe-rs = 0.32.0`（非 git 版）release 构建零错误零警告。为适配 0.32 公开 API 做了如下修正：
