@@ -1,0 +1,52 @@
+name: CW32F002 Series
+generated_from_pack: true
+pack_file_release: 1.0.1
+variants:
+- name: CW32F002F3
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x4000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20000800
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32f002
+flash_algorithms:
+- name: flashcw32f002
+  description: Flash algorithm for CW32F002 Series (converted from vendor FLM)
+  default: true
+  instructions: QLpwR8C6cEf+tQxGFUYAIgAjnqBHaAZogGgBlwCWApBQHp1OMGOwY3BjnEgCi5xIgkIG0AAqBNADIEACEEOwYQHgASD+vZRIQGiWTjBDkk5wYAC/kEiAaQEm9gMwQLBC+NGQSEAejE4wYEAccGCOSI5OMGIAIQ/giEggMAgYAHxuRnZcsEIF0IZIQB6HTjBiASDX50gcgbIIKe3TgUgPMIJOQD4wYH9IQB5wYIBIQGgABoAPACgB0f8gAOB9SANGeEhAHhhDeU5APrBgMEaAaJhCAdABILXnckj+MHNOcGIwRkBq/ygB0AEgq+cAIG9OQD4wYrBiAL+k5wFGaUgPMGpKQDoQYGdIQB6QYBBGgGgAKAHQASBwRwAgZEpAOpBiAL/45wAhACIAv2BIQDgAaCAjGEAgKPjQWkgRMFtLQDsYYBhGAGgSIxhAEigB0AEgcEdXSEBoAAaADwAoAtEBIIADAeAFIAADAkYAIQzgUkgIYAC/TUhAOABoICMYQCAo+ND/Mf8xAjGRQvDTR0hAOEBqgAeADwAoAdABINjnACEG4AhoQBwAKAHQASDQ5wkdkUL20wAgy+cCRgC/O0hAOABoICMYQCAo+NA2SBEwN0tAOxhgGEYAaBIjGEASKAHQASBwRzRIEGAAvzBIQDgAaCAjGEAgKPjQLEhAOEBqgAeADwAoAdABIOvnACEG4FBYQBwAKAHQASDj5wkdASBAAoFC9NMAINznELUDRgC/H0hAOABoICQgQCAo+NAZSBAwRAMgYEADAGgRJCBAESgB0AEgEL0M4BBoGGAbHRIdCR8AvxJIQDgAaCAkIEAgKPjQACnw0Q1IQDhAaoAHgA8AKAHQASDl5wAg4+cAAENXMzJGMDAyAAAAAAAAAUCgBxAA//8AAAEAWlr/A1paQCACQAADAUD/AwAAeFY0EgAAAAA=
+  pc_init: 0x9
+  pc_uninit: 0xfb
+  pc_program_page: 0x229
+  pc_erase_sector: 0x1b9
+  pc_erase_all: 0x125
+  data_section_offset: 0x2bc
+  flash_properties:
+    address_range:
+      start: 0x0
+      end: 0x4000
+    page_size: 0x200
+    erased_byte_value: 0xff
+    program_page_timeout: 100
+    erase_sector_timeout: 3000
+    sectors:
+    - size: 0x200
+      address: 0x0

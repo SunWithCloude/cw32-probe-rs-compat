@@ -1,0 +1,34 @@
+[package]
+name = "cw32-detect"
+version = "0.1.0"
+edition = "2021"
+description = "WHXY CW32 MCU auto-detection layer for probe-rs (factory digital-signature based)"
+license = "MIT OR Apache-2.0"
+keywords = ["probe-rs", "cw32", "whxy", "embedded", "debug"]
+categories = ["command-line-utilities", "development-tools::debugging"]
+publish = false
+
+[dependencies]
+# 与本机 probe-rs 0.32.x 对齐(其内部依赖 probe-rs-target 0.32.0)
+probe-rs = "0.32"
+
+[dependencies.probe-rs-target]
+version = "0.32"
+optional = true
+
+[dependencies.yaml_serde]
+version = "0.10"
+optional = true
+
+[features]
+default = ["vendor"]
+# vendor: 注册 probe_rs::vendor::Vendor 插件(把 CW32 识别注入本进程的自动识别链),
+# 并提供运行时 target 注册。若与你的依赖树冲突, 可 default-features = false 关闭。
+vendor = ["dep:probe-rs-target", "dep:yaml_serde"]
+
+[[bin]]
+name = "cw32-detect"
+path = "src/main.rs"
+
+[profile.release]
+lto = "thin"

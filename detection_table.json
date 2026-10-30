@@ -1,0 +1,333 @@
+{
+  "series": [
+    {
+      "series": "CW32F002",
+      "chip_type_prefix": "CW32F002",
+      "builtin": false,
+      "target_file": "CW32F002_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32F002F3",
+          "rom": 16384,
+          "ram": 2048
+        }
+      ],
+      "digitalsign": {
+        "type": "0x1007d0",
+        "tlen": "0x12",
+        "pin": "0x1007e2",
+        "flash": "0x1007e4",
+        "ram": "0x1007e8",
+        "uid": null,
+        "ulen": "0x0",
+        "uid_lid": "0x10084c",
+        "uid_wid": "0x100850",
+        "uid_row": "0x100854",
+        "uid_col": "0x100858",
+        "uid_sid": "0x10085c"
+      }
+    },
+    {
+      "series": "CW32F003",
+      "chip_type_prefix": "CW32F003",
+      "builtin": false,
+      "target_file": "CW32F003_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32F003F4",
+          "rom": 20480,
+          "ram": 3072
+        }
+      ],
+      "digitalsign": {
+        "type": "0x1007d0",
+        "tlen": "0x12",
+        "pin": "0x1007e2",
+        "flash": "0x1007e4",
+        "ram": "0x1007e8",
+        "uid": null,
+        "ulen": "0x0",
+        "uid_lid": "0x10084c",
+        "uid_wid": "0x100850",
+        "uid_row": "0x100854",
+        "uid_col": "0x100858",
+        "uid_sid": "0x10085c"
+      }
+    },
+    {
+      "series": "CW32F020",
+      "chip_type_prefix": "CW32F020",
+      "builtin": false,
+      "target_file": "CW32F020_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32F020C6",
+          "rom": 32768,
+          "ram": 8192
+        },
+        {
+          "name": "CW32F020K6",
+          "rom": 32768,
+          "ram": 8192
+        },
+        {
+          "name": "CW32F020F6",
+          "rom": 32768,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x12610",
+        "tlen": "0x16",
+        "pin": "0x12626",
+        "flash": "0x12628",
+        "ram": "0x1262c",
+        "uid": "0x12660",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32F030",
+      "chip_type_prefix": "CW32F030",
+      "builtin": false,
+      "target_file": "CW32F030_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32F030C8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32F030K8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32F030F8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32F030F6",
+          "rom": 32768,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x12610",
+        "tlen": "0x16",
+        "pin": "0x12626",
+        "flash": "0x12628",
+        "ram": "0x1262c",
+        "uid": "0x12660",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L010",
+      "chip_type_prefix": "CW32L010",
+      "builtin": true,
+      "target_file": null,
+      "variants": [
+        {
+          "name": "CW32L010x8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x1007e0",
+        "tlen": "0x10",
+        "pin": "0x1007d5",
+        "flash": "0x1007d8",
+        "ram": "0x1007d6",
+        "uid": "0x1007b0",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L011",
+      "chip_type_prefix": "CW32L011",
+      "builtin": true,
+      "target_file": null,
+      "variants": [
+        {
+          "name": "CW32L011x8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x1007e0",
+        "tlen": "0x10",
+        "pin": "0x1007d5",
+        "flash": "0x1007d8",
+        "ram": "0x1007d6",
+        "uid": "0x1007b0",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L012",
+      "chip_type_prefix": "CW32L012",
+      "builtin": true,
+      "target_file": null,
+      "variants": [
+        {
+          "name": "CW32L012x8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x1007e0",
+        "tlen": "0x10",
+        "pin": "0x1007d5",
+        "flash": "0x1007d8",
+        "ram": "0x1007d6",
+        "uid": "0x1007b0",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L031",
+      "chip_type_prefix": "CW32L031",
+      "builtin": false,
+      "target_file": "CW32L031_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32L031C8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32L031K8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32L031F8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x100a24",
+        "tlen": "0x16",
+        "pin": "0x100a3a",
+        "flash": "0x100a3c",
+        "ram": "0x100a40",
+        "uid": "0x100a10",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L052",
+      "chip_type_prefix": "CW32L052",
+      "builtin": false,
+      "target_file": "CW32L052_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32L052R8",
+          "rom": 65536,
+          "ram": 8192
+        },
+        {
+          "name": "CW32L052C8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x100a24",
+        "tlen": "0x16",
+        "pin": "0x100a3a",
+        "flash": "0x100a3c",
+        "ram": "0x100a40",
+        "uid": "0x100a10",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32L083",
+      "chip_type_prefix": "CW32L083",
+      "builtin": false,
+      "target_file": "CW32L083_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32L083VC",
+          "rom": 262144,
+          "ram": 24576
+        },
+        {
+          "name": "CW32L083MC",
+          "rom": 262144,
+          "ram": 24576
+        },
+        {
+          "name": "CW32L083RC",
+          "rom": 262144,
+          "ram": 24576
+        },
+        {
+          "name": "CW32L083RB",
+          "rom": 131072,
+          "ram": 24576
+        }
+      ],
+      "digitalsign": {
+        "type": "0x100a24",
+        "tlen": "0x16",
+        "pin": "0x100a3a",
+        "flash": "0x100a3c",
+        "ram": "0x100a40",
+        "uid": "0x100a10",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32R031",
+      "chip_type_prefix": "CW32R031",
+      "builtin": false,
+      "target_file": "CW32R031_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32R031C8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x100a24",
+        "tlen": "0x16",
+        "pin": "0x100a3a",
+        "flash": "0x100a3c",
+        "ram": "0x100a40",
+        "uid": "0x100a10",
+        "ulen": "0xa"
+      }
+    },
+    {
+      "series": "CW32W031",
+      "chip_type_prefix": "CW32W031",
+      "builtin": false,
+      "target_file": "CW32W031_Series.yaml",
+      "variants": [
+        {
+          "name": "CW32W031R8",
+          "rom": 65536,
+          "ram": 8192
+        }
+      ],
+      "digitalsign": {
+        "type": "0x100a24",
+        "tlen": "0x16",
+        "pin": "0x100a3a",
+        "flash": "0x100a3c",
+        "ram": "0x100a40",
+        "uid": "0x100a10",
+        "ulen": "0xa"
+      }
+    }
+  ]
+}

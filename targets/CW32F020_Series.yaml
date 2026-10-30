@@ -1,0 +1,104 @@
+name: CW32F020 Series
+generated_from_pack: true
+pack_file_release: 1.0.2
+variants:
+- name: CW32F020C6
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x8000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20002000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32f020
+- name: CW32F020K6
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x8000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20002000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32f020
+- name: CW32F020F6
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x8000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20002000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32f020
+flash_algorithms:
+- name: flashcw32f020
+  description: Flash algorithm for CW32F020 Series (converted from vendor FLM)
+  default: true
+  instructions: QLpwR8C6cEf+tQxGFUYAIwAilqBHaAZogGgBlwCWApBQHpVOMGOwY3BjkyBAAgOIkkiDQgbQACsE0AMgQAIYQ7BhAeABIP69i0hAaIxOMEOJTnBgAL+ISIBpASb2AzBAsEL40YZIQB6DTjBgQBxwYAAhC+CTIEACCBgAfG5GdlywQgHQASDe50gcgbIIKfHTe0gPMHtOMGB5SEAecGB6SEBoAAaAD4AAeE5ORDJYkLJzTnYeMENzTrBgEAxwTnYeMENwTvBgMEaAaJaysEIB0AEguOdrSMZoEAyGQgHQASCx5wAgZ04wYrBiAL+r5wFGY0gPMGNKEGBhSEAekGDQYBBGgGgAKAHQASBwR11IwGgAKAHQASD45wAgWkqQYgC/8+cAIQAiAL9WSABoICMYQCAo+dBSSBEwUksYYBhGAGgSIxhAEigB0AEgcEdOSEBoAAaAD4AATktLRBpYACEL4ExICGAAv0dIAGggIxhAICj50P8x/zECMZFC8dNBSEBqgAeADwAoAdABIN7nACEG4AhoQBwAKAHQASDW5wkdkUL20wAg0ecCRgC/NkgAaCAjGEAgKPnQMkgRMDJLGGAYRgBoEiMYQBIoAdABIHBHMUgQYAC/K0gAaCAjGEAgKPnQKEhAaoAHgA8AKAHQASDt5wAhBuBQWEAcACgB0AEg5ecJHQEgQAKBQvTTACDe5xC1A0YAvxtIAGggJCBAICj50BdIEDBEAyBgQAMAaBEkIEARKAHQASAQvQvgEGgYYBsdEh0JHwC/D0gAaCAkIEAgKPnQACnx0QtIQGqAB4APACgB0AEg5+cAIOXnAABDVzMyRjAyMAAAAAAAAAFA//8AAAEAWloAIAJAAAMBQBQAAAAEAAAAeFY0EgAAAAAAQAAAAIAAAAAAAQAAIAEADwAAAP8AAAD//wAA//8DAA==
+  pc_init: 0x9
+  pc_uninit: 0xef
+  pc_program_page: 0x20f
+  pc_erase_sector: 0x1a7
+  pc_erase_all: 0x123
+  data_section_offset: 0x298
+  flash_properties:
+    address_range:
+      start: 0x0
+      end: 0x8000
+    page_size: 0x200
+    erased_byte_value: 0xff
+    program_page_timeout: 100
+    erase_sector_timeout: 3000
+    sectors:
+    - size: 0x200
+      address: 0x0

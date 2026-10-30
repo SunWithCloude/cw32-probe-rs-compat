@@ -1,0 +1,130 @@
+name: CW32L083 Series
+generated_from_pack: true
+pack_file_release: 1.0.9
+variants:
+- name: CW32L083VC
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x40000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20006000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32l083
+- name: CW32L083MC
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x40000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20006000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32l083
+- name: CW32L083RC
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x40000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20006000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32l083
+- name: CW32L083RB
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x20000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20006000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32l083
+flash_algorithms:
+- name: flashcw32l083
+  description: Flash algorithm for CW32L083 Series (converted from vendor FLM)
+  default: true
+  instructions: QLpwR8C6cEfwtQ1GFkYAIQAiACQAI4dIh084Y4dIAoiESIJCBtAAKgTQAyBAAhBDuGEB4AEg8L1/SEBogE84Q31PeGAAv3xIgGkBJ/8DOEC4QvjRekhAHndPOGBAHHhgd0gPMHdPOGB1SEAeeGB2SEBoAAaEDwAhDeBySAgwjwDDGXJIGGAYaGpPuEIB0AEg0edIHMGyoULv2QAgaU84YrhiAL/H5wFGZUgPMGVKEGBjSEAekGDQYBBhUGEQRoBoACgB0AEgcEdeSMBoACgB0AEg+OdbSABpACgB0AEg8udYSEBpACgB0AEg7OcAIFVKkGIAv+fnACEAIgC/UUgAaCAjGEAgKPnQTUgSME1LGGAYRgBoEyMYQBMoAdABIHBHSUhAaAAGgA+AAElLS0QaWEhIACMYYAC/QkgAaCAjGEAgKPnQP0hAaoAHgA8AKAHQASDk5wAhBuAIaEAcACgB0AEg3OcJHZFC9tMAINfnAkYAvzRIAGggIxhAICj50DBIETAwSxhgGEYAaBIjGEASKAHQASBwRy9IEGAAvylIAGggIxhAICj50CZIQGqAB4APACgB0AEg7ecAIQbgUFhAHAAoAdABIOXnCR0BIEACgUL00wAg3ucQtQNGAL8ZSABoICQgQCAo+dAVSBAwRAMgYEADAGgRJCBAESgB0AEgEL0L4BBoGGAbHRIdCR8Avw1IAGggJCBAICj50AAp8dEJSEBqgAeADwAoAdABIOfnACDl5wAA//8AAAAAAUAAChAAAQBaWgAgAkAAAwFA//9aWgQAAAB4VjQSAAAAAAAAAQAAAAIAAAADAAAABAA=
+  pc_init: 0x9
+  pc_uninit: 0xa7
+  pc_program_page: 0x1d7
+  pc_erase_sector: 0x16f
+  pc_erase_all: 0xf7
+  data_section_offset: 0x258
+  flash_properties:
+    address_range:
+      start: 0x0
+      end: 0x40000
+    page_size: 0x200
+    erased_byte_value: 0xff
+    program_page_timeout: 100
+    erase_sector_timeout: 3000
+    sectors:
+    - size: 0x200
+      address: 0x0

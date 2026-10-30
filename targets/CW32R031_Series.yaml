@@ -1,0 +1,52 @@
+name: CW32R031 Series
+generated_from_pack: true
+pack_file_release: 1.0.1
+variants:
+- name: CW32R031C8
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x10000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20002000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32r031
+flash_algorithms:
+- name: flashcw32r031
+  description: Flash algorithm for CW32R031 Series (converted from vendor FLM)
+  default: true
+  instructions: QLpwR8C6cEdwtQNGDEYVRgAhACJ6SHtOMGN7SAGIeEiBQgbQACkE0AMgQAIIQ7BhAeABIHC9c0hAaHROMENxTnBgAL9vSIBpASb2AzBAsEL40W5IQB5rTjBgQBxwYGtIDzBrTjBgaUhAHnBgaUhAaEAGwA+AAGhOTkQyWGNIQB4QQ2NOsGAwRoBokEIB0AEg0OcAIF5OMGKwYgC/yucBRlpIDzBaShBgWEhAHpBgEEaAaAAoAdABIHBHACBUSpBiAL/55wAhACIAv1FIAGggIxhAICj50E1IEjBNSxhgGEYAaBMjGEATKAHQASBwR0lIQGhABsAPgABIS0tEGlhISAAjGGAAv0JIAGggIxhAICj50D9IQGqAB4APACgB0AEg5OcAIQbgCGhAHAAoAdABINznCR2RQvbTACDX5wJGAL8zSABoICMYQCAo+dAvSBEwL0sYYBhGAGgSIxhAEigB0AEgcEcuSBBgAL8pSABoICMYQCAo+dAmSEBqgAeADwAoAdABIO3nACEG4FBYQBwAKAHQASDl5wkdASBAAoFC9NMAIN7nELUDRgC/GUgAaCAkIEAgKPnQFUgQMEQDIGBAAwBoESQgQBEoAdABIBC9C+AQaBhgGx0SHQkfAL8MSABoICQgQCAo+dAAKfHRCEhAaoAHgA8AKAHQASDn5wAg5ef//wAAAAABQAAKEAABAFpaACACQAADAUAMAAAABAAAAHhWNBIAAAAAAIAAAAAAAQD/AAAA//8AAA==
+  pc_init: 0x9
+  pc_uninit: 0x9f
+  pc_program_page: 0x1a5
+  pc_erase_sector: 0x13d
+  pc_erase_all: 0xc5
+  data_section_offset: 0x224
+  flash_properties:
+    address_range:
+      start: 0x0
+      end: 0x10000
+    page_size: 0x200
+    erased_byte_value: 0xff
+    program_page_timeout: 100
+    erase_sector_timeout: 3000
+    sectors:
+    - size: 0x200
+      address: 0x0

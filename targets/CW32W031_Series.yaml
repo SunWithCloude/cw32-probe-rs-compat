@@ -1,0 +1,52 @@
+name: CW32W031 Series
+generated_from_pack: true
+pack_file_release: 1.0.2
+variants:
+- name: CW32W031R8
+  cores:
+  - name: main
+    type: armv6m
+    core_access_options: !Arm
+      ap: !v1 0
+  memory_map:
+  - !Nvm
+    name: IROM1
+    range:
+      start: 0x0
+      end: 0x10000
+    cores:
+    - main
+    access:
+      write: false
+      boot: true
+  - !Ram
+    name: IRAM1
+    range:
+      start: 0x20000000
+      end: 0x20002000
+    cores:
+    - main
+  flash_algorithms:
+  - flashcw32w031
+flash_algorithms:
+- name: flashcw32w031
+  description: Flash algorithm for CW32W031 Series (converted from vendor FLM)
+  default: true
+  instructions: cLUDRgxGVklWTS2IaAVADVVNrWntCu0CBUNTTrVhMEaAaQ8l7QKoQwElrQNAGTVGqGEA4EkeTEiAaQAEwA8AKAHRACn20QApAdEBIHC9RkgAawIlqEOAHENNKGMAIENNqGIBKgTQAioD0AMqBtEE4AC/P0g9TahgAeAA4AC/AL8AIOPnAUY7SDhKkGAQYAAgcEeAITdIgBw0ShBgACEL4DVISgIQYAC/MEgAaIAGwA8AKPnRSByBsoAp8dsrSEBqACgF0CtIKUqQYBBgASBwRyhIJkoQYAAg+ecBRiVIgBwiShBgJEgIYAC/IEgAaIAGwA8AKPnRHUhAagAoBdAdSBpKkGAQYAEgcEcaSBdKEGAAIPnnMLUDRhZIQBwTTShgACQL4BB4GHBbHFIcAL8PSABogAbADwAo+dFkHIxC8dMKSEBqACgF0ApICE2oYChgASAwvQdIBU0oYAAg+ecAAICpAwAAChAAAAABQAAgAkD//1paAABaWnhWNBIAAAAA
+  pc_init: 0x1
+  pc_uninit: 0x85
+  pc_program_page: 0x115
+  pc_erase_sector: 0xdb
+  pc_erase_all: 0x93
+  data_section_offset: 0x17c
+  flash_properties:
+    address_range:
+      start: 0x0
+      end: 0x10000
+    page_size: 0x80
+    erased_byte_value: 0xff
+    program_page_timeout: 10
+    erase_sector_timeout: 1000
+    sectors:
+    - size: 0x200
+      address: 0x0

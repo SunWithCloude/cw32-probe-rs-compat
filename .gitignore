@@ -1,0 +1,13 @@
+# Rust
+cw32-detect/target/
+**/*.rs.bk
+
+# 生成流程的中间产物(scripts/ 会重建)
+extract/
+pack/
+
+# 编辑器/系统
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
