@@ -1,4 +1,6 @@
 # cw32-probe-rs-compat
+> **2026-10-31 更新：识别层已上游化。** [probe-rs PR #4598](https://github.com/probe-rs/probe-rs/pull/4598) 已合并（`Cw32Signature` 检测方案进 `probe-rs-target`，数据进 target yaml，vendor 只剩通用 executor），[issue #4550](https://github.com/probe-rs/probe-rs/issues/4550) 随之关闭。**下一版 probe-rs 发布后，`probe-rs info` / 自动 attach 对 CW32 开箱即用**，本仓的 `upstream/whxy.rs` 与方式 E 属于历史记录；`cw32-detect` 仍可作为不升级 probe-rs 时的独立识别工具与 0.32 插件方案。
+
 
 **武汉芯源 CW32 全系列 × probe-rs 兼容层**：补齐 probe-rs 对 CW32 的两层缺失支持——
 
@@ -14,7 +16,7 @@
 | CW32L010 / L011 / L012 target | **已内置**（probe-rs ≥ v0.31.0, 2026-01-17） | PR #3682（WaitFme, 2025-12-14 合入） |
 | CW32F030 target | PR #4549（SunWithCloude, open, 硬件已验证） | 本仓库 `targets/CW32F030_Series.yaml` 与其逐字节一致 |
 | 其余 9 个系列 target | **缺失** → 本仓库补齐 | F002 / F003 / F020 / L031 / L052 / L083 / R031 / W031 |
-| 自动识别层（全部系列） | **缺失**（issue #4550：`probe-rs info` 报 `The connected chip could not automatically be determined`） | 本仓库 `cw32-detect` + `upstream/whxy.rs` |
+| 自动识别层（全部系列） | 上游缺失 → **已由 PR #4598 修复并合并**（2026-10-31） | 本仓库 `cw32-detect`（独立工具/0.32 插件）；上游实现见 probe-rs `vendor/whxy.rs` + `Cw32Signature` |
 
 CW32 无法被 probe-rs 原生自动识别的原因：全系列为 Cortex-M0+ + **MINDP（DPv1，无 SWD multidrop）**，ROM 表里只有 ARM 通用组件，标准 ARM 调试拓扑层面**没有任何厂商唯一信息**。probe-rs 的识别靠各厂商 vendor 模块读厂商私有 ID（如 ST 读 DBGMCU_IDCODE），CW32 此前无人实现。
 
