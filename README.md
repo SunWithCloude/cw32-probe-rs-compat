@@ -14,7 +14,7 @@
 | 层 | 状态 | 来源 |
 |---|---|---|
 | CW32L010 / L011 / L012 target | **已内置**（probe-rs ≥ v0.31.0, 2026-01-17） | PR #3682（WaitFme, 2025-12-14 合入） |
-| CW32F030 target | PR #4549（SunWithCloude, open, 硬件已验证） | 本仓库 `targets/CW32F030_Series.yaml` 与其逐字节一致 |
+| CW32F030 target | **已由 PR #4549 合并**（SunWithCloude, 2026-10-31, 硬件已验证） | 本仓库 `targets/CW32F030_Series.yaml` 与其逐字节一致 |
 | 其余 9 个系列 target | **缺失** → 本仓库补齐 | F002 / F003 / F020 / L031 / L052 / L083 / R031 / W031 |
 | 自动识别层（全部系列） | 上游缺失 → **已由 PR #4598 修复并合并**（2026-10-31） | 本仓库 `cw32-detect`（独立工具/0.32 插件）；上游实现见 probe-rs `vendor/whxy.rs` + `Cw32Signature` |
 
@@ -229,7 +229,7 @@ hook 内部实测：候选基址读取失败后 `reinitialize()` 即可清 MINDP
 ## 上游与相关链接
 
 - issue #4550 `probe-rs info cannot auto-detect the CW32L012 although the target is built in`（识别层空白；本仓库 `upstream/whxy.rs` 即其问题 1 的答案）
-- PR #4549 `Add CW32F030 target support`（target 层，与本仓库 F030 文件一致）
+- PR #4549 `Add CW32F030 target support`（target 层，与本仓库 F030 文件一致；**2026-10-31 已合并**）
 - PR #3682 `Add support for cw32l0`（L0 系列内置，v0.31.0）
 - probe-rs 0.32 的 vendor/plugin 机制（`register_plugin` 公开 API，`VENDORS` 前置插入）
 
